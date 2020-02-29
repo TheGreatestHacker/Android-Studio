@@ -3,6 +3,7 @@ package com.example.tempconverter2;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,8 +12,15 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,16 +66,18 @@ public class MainActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekbar);
         seekBar.setProgress(start_position);
         //create event handler for SeekBar
+        final TextView tv = (TextView)findViewById(R.id.textView3);
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 if (temp == 0) //for initial view result
-                    Toast.makeText(getBaseContext(), "Fahrenheit result: 32 degrees",
-                            Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getBaseContext(), "Fahrenheit result: 32 degrees", Toast.LENGTH_SHORT).show();
+                    tv.setText("Fahrenheit results: 32 degrees");
                 else
-                    Toast.makeText(getBaseContext(), "Fahrenheit result: "
-                            + String.valueOf(discrete) +
-                            " degrees",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getBaseContext(), "Fahrenheit result: "
+                    //        + String.valueOf(discrete) +
+                    //        " degrees",Toast.LENGTH_SHORT).show();
+                    tv.setText("Fahrenheit results: " + String.valueOf(discrete) + " degrees");
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) { }
@@ -83,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //Listview logic
         String[] wkTemps = new String[]{"37", "32", "28", "28", "30"};
+        String[] wkDays = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         lv = findViewById(R.id.listView);
         @SuppressWarnings({"unchecked", "rawtypes"})
         /*
@@ -90,11 +101,40 @@ public class MainActivity extends AppCompatActivity {
          * attach the adapter to the ListView. First, initialize the adapter...:
          *
          */
-                ArrayAdapter adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,
+
+        /*
+        ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_2,
                 android.R.id.text1, wkTemps);
         // Assign adapter to ListView
         lv.setAdapter(adapter);
+        */
+
+
+        ListView resultsListView = (ListView) findViewById(R.id.listView);
+        HashMap<String, String> dayTemp = new HashMap<>();
+        dayTemp.put("Monday", "38");
+        dayTemp.put("Tuesday", "37");
+        dayTemp.put("Wednesday", "33");
+        dayTemp.put("Thursday", "31");
+        dayTemp.put("Friday", "30");
+
+        List<HashMap<String, String>> listItems = new ArrayList<>();
+        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
+                new String[]{"First Line", "Second Line"},
+                new int[]{R.id.text3, R.id.text4});
+
+        Iterator it = dayTemp.entrySet().iterator();
+        while (it.hasNext()){
+            HashMap<String, String> resultsMap = new HashMap<>();
+            Map.Entry pair = (Map.Entry)it.next();
+            resultsMap.put("First Line", pair.getKey().toString());
+            resultsMap.put("Second Line", pair.getValue().toString());
+            listItems.add(resultsMap);
+        }
+        resultsListView.setAdapter(adapter);
+
+
 
         final Button button = findViewById(R.id.backButton);
         button.setOnClickListener(new View.OnClickListener() {
