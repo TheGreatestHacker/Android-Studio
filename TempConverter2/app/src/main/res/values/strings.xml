@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TempConverter2</string>
+    <string name="banner">5 Day Chicago Forecast</string>
 </resources>
