@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Quotes</string>
+    <string name="quote_1">Innovation distinguished between a leader and a
+    follower</string>
+    <string name="quote_2">I want to put a ding in the universe!</string>
+    <string name="quote_3">People don\'t know what they want until you show it to
+    them.</string>
+    <string name="quote_4">The only way to be truly satisfied is to do what you
+    believe is great work.</string>
+    <string name="quote_5">That\'s been one of my mantras -- focus and simplicity.
+    Simple can be harder than complex: You have to work hard to get your thinking
+    clean to make it simple. But it\'s worth it in the end because once you get
+    there, you can move mountains.</string>
+    <string name="quote_6">Great things in business are never done by one person,
+    they\'re done by a team of people.</string>
+    <string name="quote_7">You can\'t connect the dots looking forward; you can
+    only connect them looking backward.</string>
+    <string name="quote_8">Your work is going to fill a large part of your life,
+    and the only way to be truly satisfied is to do what you believe is great
+    work.</string>
+    <string name="quote_9">I\'m the only person I know that\'s lost a quarter of a
+    billion dollars in one year. ... It\'s very character-building.</string>
+    <string name="quote_10">It\'s more fun to be a pirate than join the
+    Navy.</string>
+</resources>
