@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     SeekBar seekBar; //declare seekbar object
     TextView textView;
+    TextView textView3;
     //declare member variables for SeekBar
     int discrete = 0;
     int start = 50;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         stub.setVisibility(View.INVISIBLE);
         //ViewStub logic
         checkBox = findViewById(R.id.checkBox1);
+        textView3 = findViewById(R.id.textView3);
         //handle checkbox click event
         checkBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton arg0, boolean isChecked) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     checkBox.setVisibility(View.GONE);
                     seekBar.setVisibility(View.GONE);
                     textView.setVisibility(View.GONE);
+                    textView3.setVisibility(View.GONE);
                     stub.setVisibility(View.VISIBLE);
                 }
             }
@@ -113,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
 
         ListView resultsListView = (ListView) findViewById(R.id.listView);
         HashMap<String, String> dayTemp = new HashMap<>();
-        dayTemp.put("Monday", "38");
-        dayTemp.put("Tuesday", "37");
-        dayTemp.put("Wednesday", "33");
-        dayTemp.put("Thursday", "31");
-        dayTemp.put("Friday", "30");
+        dayTemp.put("Fri", "38");
+        dayTemp.put("Thur", "37");
+        dayTemp.put("Wed", "33");
+        dayTemp.put("Tue", "31");
+        dayTemp.put("Mon", "30");
 
         List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
@@ -143,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 checkBox.setVisibility(View.VISIBLE);
                 seekBar.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.VISIBLE);
+                textView3.setVisibility(View.VISIBLE);
                 stub.setVisibility(View.GONE);
             }
         });
