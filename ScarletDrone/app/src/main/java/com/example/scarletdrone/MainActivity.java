@@ -17,9 +17,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String url = "jdbc:mysql://192.168.0.192:3306/myDB";
-    private static final String user = "hitesh";
-    private static final String pass = "1234";
+    //private static final String url = "jdbc:mysql://73.208.64.83:3306/exampledb";
+    private static final String url = "jdbc:mysql://192.168.0.18:3306/exampledb";
+    private static final String user = "bryan";
+    private static final String pass = "bc169558";
     Button btnFetch,btnClear;
     TextView txtData;
 
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String result = "Database Connection Successful\n";
                 Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("select distinct Country from tblCountries");
+                ResultSet rs = st.executeQuery("select * from customer");
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 while (rs.next()) {
