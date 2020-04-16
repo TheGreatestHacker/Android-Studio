@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="radio_true">True</string>
+    <string name="radio_false">False</string>
+    <string name="btn_display">Display Results</string>
+</resources>
+
